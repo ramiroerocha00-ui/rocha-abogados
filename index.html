@@ -1,44 +1,653 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rocha Abogados - Law Firm</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Estudio Rocha y Asociados | Abogados Penalistas</title>
+    <meta name="description" content="Estudio Rocha y Asociados — Abogados Penalistas en CABA, Provincia de Buenos Aires y a nivel Federal. Defensa penal, sucesiones, accidentes de tránsito y ART.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg-primary: #090909;
+            --bg-secondary: #0e0e0e;
+            --bg-card: #131313;
+            --border: #1e1e1e;
+            --border-light: #2a2a2a;
+            --text-primary: #e8e8e8;
+            --text-secondary: #7a7a7a;
+            --text-muted: #555555;
+            --accent: #a08a4a;
+            --accent-hover: #8a7540;
+            --accent-subtle: rgba(160, 138, 74, 0.12);
+            --whatsapp: #1a8b3f;
+            --whatsapp-hover: #157033;
+            --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+            --font-sans: 'Inter', -apple-system, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.65;
+            font-size: 15px;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ── Header ── */
+        header {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+            padding: 4rem 1.5rem 3rem;
+        }
+
+        .header-icon {
+            width: 52px;
+            height: 52px;
+            margin: 0 auto 1.5rem;
+            opacity: 0.5;
+        }
+
+        .header-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .header-rule {
+            width: 48px;
+            height: 1px;
+            background: var(--accent);
+            margin: 0 auto 1.5rem;
+            opacity: 0.6;
+        }
+
+        header h1 {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 0.4rem;
+            color: var(--text-primary);
+        }
+
+        header h1 span {
+            color: var(--accent);
+        }
+
+        .header-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.82rem;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            font-family: var(--font-sans);
+        }
+
+        .header-jurisdiccion {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: transparent;
+            border: 1px solid var(--border-light);
+            color: var(--text-muted);
+            font-size: 0.68rem;
+            padding: 0.3rem 0.9rem;
+            border-radius: 2px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        /* ── Navigation ── */
+        nav {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            padding: 0.85rem 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--text-primary);
+        }
+
+        /* ── Main ── */
+        main {
+            flex: 1;
+            max-width: 740px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        section {
+            margin-bottom: 3.5rem;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .section-title svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            color: var(--accent);
+            opacity: 0.7;
+        }
+
+        .section-desc {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .divider {
+            height: 1px;
+            background: var(--border);
+            margin-bottom: 3.5rem;
+        }
+
+        /* ── Servicios ── */
+        .servicios-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+        }
+
+        .servicio-card {
+            background: var(--bg-card);
+            padding: 1.5rem;
+            transition: background 0.3s;
+        }
+
+        .servicio-card:hover {
+            background: #171717;
+        }
+
+        .servicio-card.principal {
+            grid-column: 1 / -1;
+            border-bottom: 2px solid var(--accent);
+            background: var(--bg-card);
+        }
+
+        .servicio-card.principal:hover {
+            background: #171717;
+        }
+
+        .servicio-card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            letter-spacing: 0.02em;
+        }
+
+        .servicio-card p {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .servicio-label {
+            display: inline-block;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-family: var(--font-sans);
+        }
+
+        /* ── Contacto ── */
+        .contacto-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contacto-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 1.3rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+        }
+
+        .contacto-item svg {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            margin-top: 2px;
+            color: var(--accent);
+            opacity: 0.7;
+        }
+
+        .contacto-item .label {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.25rem;
+            font-weight: 500;
+        }
+
+        .contacto-item .value {
+            font-size: 0.92rem;
+            font-weight: 500;
+        }
+
+        .contacto-item .value a {
+            transition: color 0.3s;
+        }
+
+        .contacto-item .value a:hover {
+            color: var(--accent);
+        }
+
+        /* ── WhatsApp CTA ── */
+        .whatsapp-cta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.7rem;
+            background: var(--whatsapp);
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 0.9rem 2rem;
+            border-radius: 2px;
+            transition: background 0.3s;
+            margin-top: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .whatsapp-cta:hover {
+            background: var(--whatsapp-hover);
+        }
+
+        .whatsapp-cta svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* ── Formulario ── */
+        .form-wrapper {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 2rem;
+        }
+
+        .form-wrapper p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            padding: 0.75rem 0.9rem;
+            border-radius: 2px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 110px;
+            max-height: 280px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--accent);
+            color: #0a0a0a;
+            font-family: var(--font-sans);
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 0.9rem;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            transition: background 0.3s;
+            margin-top: 0.5rem;
+        }
+
+        .btn-submit:hover {
+            background: var(--accent-hover);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        #formAlert {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        #formAlert.success {
+            color: var(--whatsapp);
+        }
+
+        #formAlert.error {
+            color: #c44;
+        }
+
+        /* ── Footer ── */
+        footer {
+            text-align: center;
+            padding: 2.5rem 1rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.72rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 600px) {
+            header {
+                padding: 2.5rem 1rem 2rem;
+            }
+
+            header h1 {
+                font-size: 1.6rem;
+            }
+
+            nav {
+                gap: 1.5rem;
+                padding: 0.75rem 0.5rem;
+            }
+
+            nav a {
+                font-size: 0.7rem;
+            }
+
+            main {
+                padding: 2rem 1rem;
+            }
+
+            .servicios-grid,
+            .contacto-grid,
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .form-wrapper {
+                padding: 1.3rem;
+            }
+        }
+    </style>
 </head>
 <body>
+
+    <!-- ── Header ── -->
     <header>
-        <h1>Welcome to Rocha Abogados</h1>
-        <nav>
-            <ul>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+        <div class="header-icon">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M32 6L10 17v3h44v-3L32 6z" fill="#a08a4a" opacity="0.5"/>
+                <rect x="14" y="22" width="5" height="26" fill="#333"/>
+                <rect x="25" y="22" width="5" height="26" fill="#333"/>
+                <rect x="35" y="22" width="5" height="26" fill="#333"/>
+                <rect x="45" y="22" width="5" height="26" fill="#333"/>
+                <rect x="8" y="48" width="48" height="4" fill="#a08a4a" opacity="0.4"/>
+                <rect x="6" y="52" width="52" height="3" fill="#333"/>
+            </svg>
+        </div>
+        <div class="header-rule"></div>
+        <h1>Estudio <span>Rocha</span> y Asociados</h1>
+        <p class="header-subtitle">Abogados Penalistas</p>
+        <div class="header-jurisdiccion">
+            <span class="badge">CABA</span>
+            <span class="badge">Provincia de Buenos Aires</span>
+            <span class="badge">Fuero Federal</span>
+        </div>
     </header>
+
+    <!-- ── Nav ── -->
+    <nav>
+        <a href="#servicios">Áreas de Práctica</a>
+        <a href="#contacto">Contacto</a>
+        <a href="#consultas">Consultas</a>
+    </nav>
+
     <main>
-        <section id="about">
-            <h2>About Us</h2>
-            <p>At Rocha Abogados, we provide expert legal services to our clients. Our team is dedicated to delivering exceptional results.</p>
+
+        <!-- ── Servicios ── -->
+        <section id="servicios">
+            <h2 class="section-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                Áreas de Práctica
+            </h2>
+            <p class="section-desc">Asistencia legal profesional con dedicación exclusiva a cada caso.</p>
+            <div class="servicios-grid">
+                <div class="servicio-card principal">
+                    <span class="servicio-label">Especialidad principal</span>
+                    <h3>Derecho Penal</h3>
+                    <p>Defensa y asistencia letrada en todas las instancias del proceso penal. Representación en jurisdicción ordinaria de CABA, Provincia de Buenos Aires y fuero Federal.</p>
+                </div>
+                <div class="servicio-card">
+                    <h3>Sucesiones</h3>
+                    <p>Tramitación de procesos sucesorios, declaratorias de herederos y partición de bienes.</p>
+                </div>
+                <div class="servicio-card">
+                    <h3>Accidentes de Tránsito</h3>
+                    <p>Reclamos por indemnización de daños y perjuicios derivados de siniestros viales.</p>
+                </div>
+                <div class="servicio-card" style="grid-column: 1 / -1;">
+                    <h3>ART — Riesgos del Trabajo</h3>
+                    <p>Reclamos ante Aseguradoras de Riesgos del Trabajo por accidentes laborales y enfermedades profesionales.</p>
+                </div>
+            </div>
         </section>
-        <section id="services">
-            <h2>Our Services</h2>
-            <ul>
-                <li>Corporate Law</li>
-                <li>Family Law</li>
-                <li>Criminal Defense</li>
-                <li>Real Estate Law</li>
-            </ul>
+
+        <div class="divider"></div>
+
+        <!-- ── Contacto ── -->
+        <section id="contacto">
+            <h2 class="section-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                Información de Contacto
+            </h2>
+            <p class="section-desc">Para coordinar una consulta presencial o comunicarse con el estudio.</p>
+            <div class="contacto-grid">
+                <div class="contacto-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <div>
+                        <div class="label">Teléfono</div>
+                        <div class="value"><a href="https://wa.me/5491141676487?text=Hola%20tengo%20una%20Urgencia%20Penal" target="_blank" rel="noopener">11-4167-6487</a></div>
+                    </div>
+                </div>
+                <div class="contacto-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <div>
+                        <div class="label">Domicilio</div>
+                        <div class="value">Ciudad Autónoma de Buenos Aires, Argentina</div>
+                    </div>
+                </div>
+            </div>
+            <a class="whatsapp-cta" href="https://wa.me/5491141676487?text=Hola%20tengo%20una%20Urgencia%20Penal" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Comunicarse por WhatsApp
+            </a>
         </section>
-        <section id="contact">
-            <h2>Contact Us</h2>
-            <p>Email: info@rochaabogados.com</p>
-            <p>Phone: (123) 456-7890</p>
+
+        <div class="divider"></div>
+
+        <!-- ── Consultas ── -->
+        <section id="consultas">
+            <h2 class="section-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                Solicitar Consulta
+            </h2>
+            <div class="form-wrapper">
+                <p>Complete el siguiente formulario con sus datos. El estudio se comunicará a la brevedad.</p>
+                <form id="consultaForm" name="consultas" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="consultas">
+                    <input type="hidden" name="subject" value="Nueva consulta — Estudio Rocha y Asociados">
+                    <p style="display:none">
+                        <label>No completar: <input name="bot-field"></label>
+                    </p>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nombre">Nombre y Apellido</label>
+                            <input type="text" id="nombre" name="nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">Teléfono</label>
+                            <input type="tel" id="telefono" name="telefono" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje / Consulta</label>
+                        <textarea id="mensaje" name="mensaje" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Enviar Consulta</button>
+                    <div id="formAlert"></div>
+                </form>
+            </div>
         </section>
+
     </main>
+
     <footer>
-        <p>&copy; 2026 Rocha Abogados. All rights reserved.</p>
+        &copy; 2026 Estudio Rocha y Asociados — Abogados Penalistas
     </footer>
+
+    <script>
+    (function() {
+        var form = document.getElementById('consultaForm');
+        var alert = document.getElementById('formAlert');
+        var btn = form.querySelector('.btn-submit');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert.textContent = '';
+            alert.className = '';
+            btn.disabled = true;
+            btn.textContent = 'Enviando...';
+
+            fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(new FormData(form)).toString()
+            })
+            .then(function(response) {
+                if (response.ok) {
+                    alert.textContent = 'Su consulta fue enviada correctamente. El estudio se comunicará a la brevedad.';
+                    alert.className = 'success';
+                    form.reset();
+                } else {
+                    throw new Error('Error');
+                }
+            })
+            .catch(function() {
+                alert.textContent = 'Se produjo un error. Por favor, intente nuevamente o comuníquese por WhatsApp.';
+                alert.className = 'error';
+            })
+            .finally(function() {
+                btn.disabled = false;
+                btn.textContent = 'Enviar Consulta';
+            });
+        });
+    })();
+    </script>
+
 </body>
 </html>
